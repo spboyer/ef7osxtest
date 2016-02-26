@@ -1,14 +1,15 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.AspNetCore.Mvc;
+
 using EF7WebAPI.Data;
-using Microsoft.AspNet.Mvc;
 
 
 namespace EF7WebAPI.Controllers
 {
-    [Route("api/[controller]")]
-    public class WeatherController : Controller
+    [Route("api/Weather")]
+    public class WeatherController
     {
         WeatherContext _context;
         public WeatherController(WeatherContext context)

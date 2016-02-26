@@ -1,10 +1,10 @@
 using System.Collections.Generic;
-using Microsoft.AspNet.Mvc;
+using Microsoft.AspNetCore.Mvc;
 
 namespace EF7WebAPI.Controllers
 {
-    [Route("api/[controller]")]
-    public class ValuesController : Controller
+    [Route("api/values")]
+    public class ValuesController 
     {
         // GET: api/values
         [HttpGet]

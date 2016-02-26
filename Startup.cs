@@ -1,16 +1,16 @@
 using EF7WebApi.Models;
 using EF7WebAPI.Data;
 using EFLogging;
-using Microsoft.AspNet.Builder;
-using Microsoft.AspNet.Hosting;
-using Microsoft.CodeAnalysis;
-//using Microsoft.CodeAnalysis;
-using Microsoft.Data.Entity;
-using Microsoft.Extensions.Configuration;
+using System.Reflection;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.PlatformAbstractions;
 
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.PlatformAbstractions;
 
 
 
@@ -40,16 +40,16 @@ namespace EF7WebAPI
         public void ConfigureServices(IServiceCollection services)
         {
             // Add framework services.
-            services.AddMvc();
+            services.AddMvcCore();
 
             //note: see https://github.com/aspnet/MusicStore/blob/dev/src/MusicStore/Startup.cs
             //for post RC1 implementation of determining if this is a test
             //with the platform inspection
             
             services.AddEntityFramework()
-                 .AddNpgsql()
+                 .AddSqlite()
                  .AddDbContext<WeatherContext>(options =>
-                     options.UseNpgsql(Configuration["Data:PostgreConnection:ConnectionString"]));
+                     options.UseSqlite(Configuration["Data:PostgreConnection:ConnectionString"]));
 
         }
 
@@ -62,7 +62,7 @@ namespace EF7WebAPI
 
             app.UseIISPlatformHandler();
 
-            app.UseStaticFiles();
+            //app.UseStaticFiles();
 
             app.UseMvc();
             //Populates the sample data

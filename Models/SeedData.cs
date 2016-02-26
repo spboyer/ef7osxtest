@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using EF7WebAPI;
 using EF7WebAPI.Data;
-using Microsoft.Data.Entity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.PlatformAbstractions;
