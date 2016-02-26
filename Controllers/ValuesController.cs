@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace EF7WebAPI.Controllers
 {
-    [Route("api/values")]
+    [Route("/api/[controller]")]
     public class ValuesController 
     {
         // GET: api/values
@@ -20,11 +20,11 @@ namespace EF7WebAPI.Controllers
             return "value";
         }
 
-        // POST api/values
-        [HttpPost]
-        public void Post([FromBody]string value)
-        {
-        }
+        // // POST api/values
+        // [HttpPost]
+        // public void Post([FromBody]string value)
+        // {
+        // }
 
         // PUT api/values/5
         [HttpPut("{id}")]

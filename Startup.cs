@@ -24,8 +24,8 @@ namespace EF7WebAPI
             // Set up configuration sources.
             var builder = new ConfigurationBuilder()
             .SetBasePath(".")
-                .AddJsonFile("appsettings.json")
-                .AddEnvironmentVariables();
+             .AddJsonFile("appsettings.json")
+                  .AddEnvironmentVariables();
             Configuration = builder.Build();
             // _platform=new Platform();
 
@@ -38,7 +38,10 @@ namespace EF7WebAPI
         public void ConfigureServices(IServiceCollection services)
         {
             // Add framework services.
-            services.AddMvcCore();
+             services.AddMvcCore()
+                    .AddJsonFormatters()
+                    .AddControllersAsServices(typeof(Startup).GetTypeInfo().Assembly);
+     
 
             //note: see https://github.com/aspnet/MusicStore/blob/dev/src/MusicStore/Startup.cs
             //for post RC1 implementation of determining if this is a test
@@ -61,7 +64,7 @@ namespace EF7WebAPI
 
             app.UseIISPlatformHandler();
 
-            //app.UseStaticFiles();
+            //app.UseStaticFiles(); <--causing build error
 
             app.UseMvc();
             //Populates the sample data
