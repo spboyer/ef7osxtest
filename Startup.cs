@@ -46,9 +46,9 @@ namespace EF7WebAPI
 
             services.AddEntityFramework()
                  .AddSqlite()
-                 .AddDbContext<WeatherContext>();
-            //(options =>
-            //  options.UseSqlite(Configuration["Data:PostgreConnection:ConnectionString"]));
+                 .AddDbContext<WeatherContext>
+            (options =>
+             options.UseSqlite("Data Source=Weather.db"));
 
         }
 
