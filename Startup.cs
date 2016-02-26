@@ -12,21 +12,18 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.PlatformAbstractions;
 
-
-
-
-
 namespace EF7WebAPI
 {
     public class Startup
     {
-      //  private readonly Platform _platform;
+        //  private readonly Platform _platform;
 
         public Startup(IHostingEnvironment env, IRuntimeEnvironment runtimeEnvironment)
         {
 
             // Set up configuration sources.
             var builder = new ConfigurationBuilder()
+            .SetBasePath(".")
                 .AddJsonFile("appsettings.json")
                 .AddEnvironmentVariables();
             Configuration = builder.Build();
@@ -46,12 +43,12 @@ namespace EF7WebAPI
             //note: see https://github.com/aspnet/MusicStore/blob/dev/src/MusicStore/Startup.cs
             //for post RC1 implementation of determining if this is a test
             //with the platform inspection
-            
+
             services.AddEntityFramework()
                  .AddSqlite()
                  .AddDbContext<WeatherContext>();
-                 //(options =>
-                   //  options.UseSqlite(Configuration["Data:PostgreConnection:ConnectionString"]));
+            //(options =>
+            //  options.UseSqlite(Configuration["Data:PostgreConnection:ConnectionString"]));
 
         }
 
@@ -71,5 +68,5 @@ namespace EF7WebAPI
             SampleData.InitializeWeatherEventDatabaseAsync(app.ApplicationServices).Wait();
         }
 
-           }
+    }
 }
