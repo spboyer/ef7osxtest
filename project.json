@@ -3,9 +3,7 @@
     "compilationOptions": {
         "emitEntryPoint": true
     },
-    "tooling": {
-        "defaultNamespace": "EF7WebAPI"
-    },
+ 
     "dependencies": {
         "NETStandard.Library": "1.0.0-*",
         "Microsoft.Extensions.Logging.Console": "1.0.0-*",

@@ -15,11 +15,12 @@ using Microsoft.Extensions.PlatformAbstractions;
 
 
 
+
 namespace EF7WebAPI
 {
     public class Startup
     {
-        private readonly Platform _platform;
+      //  private readonly Platform _platform;
 
         public Startup(IHostingEnvironment env, IRuntimeEnvironment runtimeEnvironment)
         {
@@ -48,8 +49,9 @@ namespace EF7WebAPI
             
             services.AddEntityFramework()
                  .AddSqlite()
-                 .AddDbContext<WeatherContext>(options =>
-                     options.UseSqlite(Configuration["Data:PostgreConnection:ConnectionString"]));
+                 .AddDbContext<WeatherContext>();
+                 //(options =>
+                   //  options.UseSqlite(Configuration["Data:PostgreConnection:ConnectionString"]));
 
         }
 
@@ -69,7 +71,5 @@ namespace EF7WebAPI
             SampleData.InitializeWeatherEventDatabaseAsync(app.ApplicationServices).Wait();
         }
 
-        // Entry point for the application.
-        public static void Main(string[] args) => Microsoft.AspNet.Hosting.WebApplication.Run<Startup>(args);
-    }
+           }
 }
