@@ -46,10 +46,10 @@ namespace EF7WebAPI
             //for post RC1 implementation of determining if this is a test
             //with the platform inspection
             
-            // services.AddEntityFramework()
-            //      .AddNpgsql()
-            //      .AddDbContext<WeatherContext>(options =>
-            //          options.UseNpgsql(Configuration["Data:PostgreConnection:ConnectionString"]));
+            services.AddEntityFramework()
+                 .AddNpgsql()
+                 .AddDbContext<WeatherContext>(options =>
+                     options.UseNpgsql(Configuration["Data:PostgreConnection:ConnectionString"]));
 
         }
 
@@ -66,7 +66,7 @@ namespace EF7WebAPI
 
             app.UseMvc();
             //Populates the sample data
-            // SampleData.InitializeWeatherEventDatabaseAsync(app.ApplicationServices).Wait();
+            SampleData.InitializeWeatherEventDatabaseAsync(app.ApplicationServices).Wait();
         }
 
         // Entry point for the application.
