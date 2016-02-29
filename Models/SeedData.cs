@@ -87,7 +87,8 @@ namespace EF7WebApi.Models
                 WeatherEvent.Create(DateTime.Now.AddDays(-1),WeatherType.Snow,true),
                 WeatherEvent.Create(DateTime.Now.AddDays(-2),WeatherType.Rain,false),
                 WeatherEvent.Create(DateTime.Now.AddDays(-3),WeatherType.Sleet,false),
-                WeatherEvent.Create(DateTime.Now.AddDays(-4),WeatherType.Hail,false)
+                WeatherEvent.Create(DateTime.Now.AddDays(-4),WeatherType.Hail,false),
+                WeatherEvent.Create(DateTime.Now.AddDays(-5),WeatherType.Snow,true)
             };
             return events;
         }

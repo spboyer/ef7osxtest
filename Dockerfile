@@ -1,5 +1,7 @@
 #shaneboyherversion
-FROM microsoft/aspnet:1.0.0-rc1-update1
+#Note, Dockerfile.aspnetcorebase will create core base from aspnetcore and run dnu restore
+#that is not part of docker-compose since it only needs to be built once
+FROM corewithdependencies
 
 COPY . /app
 WORKDIR /app
